@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>贪吃蛇游戏</h1>
+            <div class="score-board">
+                <span>得分: <span id="score">0</span></span>
+                <span>等级: <span id="level">1</span></span>
+            </div>
+        </header>
+
+        <div class="game-settings" id="settingsPanel">
+            <div class="setting-group">
+                <label for="difficulty">难度选择:</label>
+                <select id="difficulty">
+                    <option value="easy">简单</option>
+                    <option value="medium" selected>中等</option>
+                    <option value="hard">困难</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="speed">速度调节:</label>
+                <input type="range" id="speed" min="1" max="10" value="5">
+                <span id="speedValue">5</span>
+            </div>
+            <div class="setting-group">
+                <label for="grid">显示网格:</label>
+                <input type="checkbox" id="grid" checked>
+            </div>
+            <div class="setting-group">
+                <label for="sound">音效开关:</label>
+                <input type="checkbox" id="sound" checked>
+            </div>
+        </div>
+
+        <div class="game-main">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+            <div class="game-controls">
+                <div class="control-btn" id="startBtn">开始游戏</div>
+                <div class="control-btn" id="pauseBtn" style="display: none;">暂停游戏</div>
+                <div class="control-btn" id="restartBtn" style="display: none;">重新开始</div>
+            </div>
+        </div>
+
+        <div class="game-over" id="gameOver" style="display: none;">
+            <h2>游戏结束</h2>
+            <p>最终得分: <span id="finalScore">0</span></p>
+            <div class="control-btn" id="restartGameBtn">重新开始</div>
+        </div>
+
+        <div class="pause-overlay" id="pauseOverlay" style="display: none;">
+            <div class="pause-message">
+                <h2>游戏暂停</h2>
+                <p>按空格键继续</p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="eatSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmFgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" preload="auto"></audio>
+    <audio id="gameOverSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmFgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" preload="auto"></audio>
+
+    <script src="js/food.js"></script>
+    <script src="js/snake.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
